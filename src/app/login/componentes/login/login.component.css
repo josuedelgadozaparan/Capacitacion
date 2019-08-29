@@ -1,0 +1,22 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    grid-template-areas:
+      ". a a ."
+      ". a a .";
+    height: 100vh;
+    background-color:darkred ;
+  }
+  .item {
+    grid-area: a;
+    align-self: center;
+    justify-self: center;
+  }
+  .card{
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(117,117,117,1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(117,117,117,1);
+    box-shadow: 0px 0px 10px 0px rgba(117,117,117,1);
+  }
+  
+  

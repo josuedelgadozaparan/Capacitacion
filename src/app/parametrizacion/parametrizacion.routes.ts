@@ -8,7 +8,7 @@ export const routes: Routes = [
     path: '',
     component: MainComponent,
     children: [
-      {path: 'home', component: VehiculosComponent}
+    {path: 'vehiculo', component: VehiculosComponent}
     ]
   }
 ];
