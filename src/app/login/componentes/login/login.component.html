@@ -1,24 +1,32 @@
-
- <router-outlet></router-outlet>
 <div class="wrapper">
     <div class="item">
-      <div class="card">
-        <div class="card-body text-center">
-          <div class="my-2">
-            <h2>Login</h2>
-          </div>
-          <div class="my-2">
-            <input type="text" class="form-control "   placeholder="usuario " />
-          </div>
-          <div class="my-2">
-            <input type="password" class="form-control "  placeholder="contraseña " />
-          </div>
-          <div class="my-2">
-            <button type="submit" class="form-control btn btn-danger" ><span class="font-weight-bold">Iniciar sesion</span></button>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="card-body text-center">
+    <div class="my-2">
+    <h2>Login</h2>
     </div>
-  </div>
-  <h2>Josue Delgado Zaparan</h2>
-  
+    <div class="my-2">
+    <input type="text" formControlName="email" class="form-control"
+     [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.user.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+    </div>
+    </div>
+    <div class="my-2">
+    <input type="text" formControlName="password" class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Email is required</div>
+        <div *ngIf="f.password.errors.password">Email must be a valid email address</div>
+    </div>
+    </div>
+    <div class="my-2">
+    <button type="submit" class="form-control btn btn-danger" ><span class="font-weight-bold">Iniciar sesion</span></button>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>

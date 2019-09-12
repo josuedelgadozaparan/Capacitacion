@@ -1,0 +1,52 @@
+<div class="f">
+  <div class="modal-header " [ngClass]="{ 'btn-primary': title === 'Editar', 'btn-danger': title === 'Nuevo' }">
+  {{title}} Vehiculo</div>
+  <form [formGroup]="vehiculosForm" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+    <div class="row">
+
+        <div class="col-sm-6">
+          <label >Nombre</label>
+          <input type="text" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }"
+                 placeholder="nombre " >
+          <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+            <div *ngIf="f.nombre.errors.required">nombre is required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label >Placa</label>
+          <input type="text" formControlName="placa" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.placa.errors }"
+                 placeholder="placa ">
+          <div *ngIf="submitted && f.placa.errors" class="invalid-feedback">
+            <div *ngIf="f.placa.errors.required">placa is required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label >Modelo</label>
+          <input type="number" formControlName="modelo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modelo.errors }"
+                 placeholder="modelo ">
+          <div *ngIf="submitted && f.modelo.errors" class="invalid-feedback">
+            <div *ngIf="f.modelo.errors.required">modelo is required</div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label >Tipo Vehiculo</label>
+          <select   formControlName="idTipoVehiculo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.idTipoVehiculo.errors }">
+            <option  *ngFor="let u of modalDataTipoVehiculo" [value]="u.id" >{{u.nombre}}</option>
+          </select>
+          <div *ngIf="submitted && f.idTipoVehiculo.errors" class="invalid-feedback">
+            <div *ngIf="f.idTipoVehiculo.errors.required">TipoVehiculo is required</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="activeModal.close('Close click')">Cerrar</button>
+      <button  type="submit" class="btn btn-danger">{{title}}</button>
+    </div>
+    </form>
+
+  </div>

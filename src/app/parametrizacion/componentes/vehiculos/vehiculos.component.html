@@ -1,1 +1,44 @@
-<router-outlet></router-outlet>
+<div class="container">
+        <div class="card">
+        <div class="card-header">
+        <h2> {{title}}</h2>
+        </div>
+        <div class="card-body">
+        <div class="row">
+        <div class="col-sm-2">
+        <button class=" btn btn-danger" (click)="open()" >Nuevo</button>
+        </div>
+        <div class="col-sm-12 my-2">
+        <p-table [value]="vehiculosArray">
+        <ng-template pTemplate="header" >
+        <tr>
+        <th *ngFor="let col of columns">
+        {{col.header}}
+        </th>
+        <th>Accion</th>
+        </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+        <td> {{rowData.id}}</td>
+        <td> {{rowData.nombre}}</td>
+        <td> {{rowData.placa}}</td>
+        <td> {{rowData.modelo}}</td>
+
+                    <td>
+                      <button class="btn  btn-primary " type="button" (click)="openModal('Editar')" >Editar</button>
+                      <button class="btn btn-danger" type="button" >Eliminar</button>
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+
+
+
+          </div>
+
+        </div>
+        </div>
+
+        </div>
