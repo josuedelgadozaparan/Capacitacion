@@ -1,3 +1,4 @@
+import { TipoVehiculoService } from './../../services/tipo-vehiculo.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscriber } from 'rxjs';
 import { Vehiculos } from '../../models/vehiculos';
@@ -16,18 +17,21 @@ export class VehiculosComponent implements OnInit {
   title: string;
   vehiculosArray: Vehiculos[];
   columns: any[];
-  constructor(private serviceVehiculo: VehiculosService,
-    private modalService: NgbModal) { }
+  constructor(private serviceVehiculo: VehiculosService ,private serviceTipoVehiculo: TipoVehiculoService,
+    private modalService: NgbModal ) { }
 
   ngOnInit() {
     this.title="Vehiculo";
 
-    this.serviceVehiculo.getAll().subscribe( response => {
-      this.vehiculosArray = response;
-      console.log(this.vehiculosArray)
-      });
 
+    this.serviceVehiculo.crearVehiculo.subscribe( response2 => {
+      console.log(response2)
+      if (response2 === true) {
+        this.llenarTabla();
+      }
+    });
 
+    this.llenarTabla();
 
 
     this.columns = [
@@ -45,6 +49,18 @@ export class VehiculosComponent implements OnInit {
   open() {
     const modalRef = this.modalService.open(VehiculosModalComponent);
     modalRef.componentInstance.title = 'crear';
-  }
+    this.serviceTipoVehiculo.getAll().subscribe( response => {
+      console.log(response)
+      modalRef.componentInstance.listTipoVehiculo = response;
+    });
 
+
+  }
+  llenarTabla() {
+
+    this.serviceVehiculo.getAll().subscribe( response => {
+      this.vehiculosArray = response;
+      console.log(this.vehiculosArray)
+      });
+  }
 }

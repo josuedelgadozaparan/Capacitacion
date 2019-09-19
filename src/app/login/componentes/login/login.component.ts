@@ -12,10 +12,10 @@ import { PruebaService } from '../../services/prueba.service';
 })
 export class LoginComponent implements OnInit {
   registerForm: FormGroup;
-  submitted = false; 
-  
+  submitted = false;
+
   json: any;
-  user: User; 
+  user: User;
 
 
   constructor(private sLogin: PruebaService ,private formBuilder: FormBuilder,private router: Router) { }
@@ -43,13 +43,13 @@ export class LoginComponent implements OnInit {
       this.user = new User();
       this.user = this.registerForm.value;
       console.log(this.user)
-      this.sLogin.validarLogin(    this.user ).subscribe( response => {
+      this.sLogin.validarLogin(   this.user ).subscribe( response => {
          if (response === true) {
            this.router.navigate(['/dashboard']);
          } else {
            alert('SUCCESS!! :-)\n\n' + JSON.stringify('No auth'));
          }
-  
+
        });
   /*
       if (this.registerForm.controls['email'.toString()].value === this.json.email
@@ -60,14 +60,14 @@ export class LoginComponent implements OnInit {
          alert('SUCCESS!! :-)\n\n' + JSON.stringify('No auth'));
        }
   */
-  
+
     }
-  
-
-  
 
 
- 
+
+
+
+
 
 
   }

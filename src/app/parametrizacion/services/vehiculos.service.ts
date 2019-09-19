@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Vehiculos } from '../models/vehiculos';
 import { Observable } from 'rxjs';
 import { RespuestaServices } from 'src/app/core/models/RespuestaServices';
@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class VehiculosService {
+
+  crearVehiculo = new EventEmitter<any>();
 
   constructor(private  http: HttpClient) { }
 
